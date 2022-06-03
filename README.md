@@ -20,3 +20,13 @@ Programming language: Kotlin
 
 ## 주요 트러블 슈팅
 
+<details>
+  <summary>debug.keystore로 API 앱 제한사항 적용 시 403에러 발생</summary>
+  
+  * 증상: API Key의 보안 때문에 debug.keystore sha-1로 제한 했는데, 안드로이드 앱에서 API 사용 시 403 에러가 발생했다.<br/>
+  
+  * 원인: 정확한 원인을 파악 할 수 없었다.<br/>
+  
+  * 조치: 인터넷 검색 결과 개발 기간 동안은 이 문제를 회피하기로 했다. IP 주소 제한으로 적용했다. 
+  
+</details>
