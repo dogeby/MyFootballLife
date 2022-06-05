@@ -9,7 +9,8 @@ import org.junit.Test
 class YoutubeDataApiTest {
     @Test
     fun requestListChannels() = runBlocking{
-        val responseBody = YoutubeDataApiModule().provideYoutubeDataService().requestListChannels("snippet", "zilioner83")
-        assertThat(responseBody.items[0].snippet.title, CoreMatchers.`is`("침착맨"))
+        val channelsResponseBody = YoutubeDataApiModule().provideYoutubeDataService().requestListChannels("snippet, contentDetails", "zilioner83")
+        assertThat(channelsResponseBody.items[0].snippet.title, CoreMatchers.`is`("침착맨"))
+        assertThat(channelsResponseBody.items[0].contentDetails.relatedPlaylists["uploads"], CoreMatchers.`is`("UUUj6rrhMTR9pipbAWBAMvUQ"))
     }
 }
