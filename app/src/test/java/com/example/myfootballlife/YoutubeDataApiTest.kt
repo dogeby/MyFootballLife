@@ -1,6 +1,6 @@
 package com.example.myfootballlife
 
-import com.example.myfootballlife.data.youtubeapi.playlists.ThumbnailsKey
+import com.example.myfootballlife.data.youtubeapi.thumbnails.ThumbnailsKey
 import com.example.myfootballlife.request.YoutubeDataApiModule
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers

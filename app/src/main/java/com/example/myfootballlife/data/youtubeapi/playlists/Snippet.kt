@@ -1,7 +1,9 @@
 package com.example.myfootballlife.data.youtubeapi.playlists
 
+import com.example.myfootballlife.data.youtubeapi.thumbnails.Thumbnails
 import com.google.gson.annotations.SerializedName
 
+/** https://developers.google.com/youtube/v3/docs/playlists */
 data class Snippet(
     @SerializedName("publishedAt") val publishedAt:String,
     @SerializedName("channelId") val channelId:String,
