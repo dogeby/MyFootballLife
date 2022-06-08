@@ -4,6 +4,8 @@ plugins {
 }
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+Properties properties = new Properties()
+properties.load(rootProject.file('local.properties').newDataInputStream())
 android {
     compileSdk 32
 
@@ -15,6 +17,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "YOUTUBE_DATA_API_KEY", properties['youtube_data_api_key']
     }
 
     buildTypes {
