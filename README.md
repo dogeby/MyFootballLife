@@ -28,6 +28,6 @@ Programming language: Kotlin
   * 원인: 정확한 원인을 파악 할 수 없었다.<br/>
   
   * 조치: 인터넷 검색 결과 뚜렷한 해결책이 없었기 때문에 개발 기간 동안은 이 문제를 회피하기로 했다. IP 주소 제한을 적용했다. 
-  -> local.properties에 api key 숨기기 (22-06-08)
+  <br>    -> local.properties에 api key 숨기기 (22-06-08)
   
 </details>
