@@ -1,14 +1,14 @@
-package com.example.myfootballlife.data.youtubeapi.channels
+package com.example.myfootballlife.data.youtubeapi.videos
 
 import com.example.myfootballlife.data.youtubeapi.PageInfo
 import com.google.gson.annotations.SerializedName
 
-/** https://developers.google.com/youtube/v3/docs/channels/list */
-data class ResponseBody(
+/** https://developers.google.com/youtube/v3/docs/videos/list?hl=ko */
+data class VideosResponseBody(
     @SerializedName("kind") val kind:String,
     @SerializedName("etag") val etag:String,
     @SerializedName("nextPageToken") val nextPageToken: String,
     @SerializedName("prevPageToken") val prevPageToken: String,
     @SerializedName("pageInfo") val pageInfo: PageInfo,
-    @SerializedName("items") val items: List<Channels>
+    @SerializedName("items") val items: List<Videos>
 )
