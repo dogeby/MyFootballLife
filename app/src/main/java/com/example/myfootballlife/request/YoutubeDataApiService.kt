@@ -7,7 +7,7 @@ import retrofit2.http.Query
  * YoutubeDataApi
  * https://developers.google.com/youtube/v3/docs
  */
-interface YoutubeDataService {
+interface YoutubeDataApiService {
 
     companion object {
         private const val apiKey = "AIzaSyAcgdr4Edx9dE-2o1hIsO7D74CPmYfxARY"

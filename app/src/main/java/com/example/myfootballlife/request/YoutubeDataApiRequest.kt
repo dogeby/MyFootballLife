@@ -5,5 +5,5 @@ import javax.inject.Singleton
 
 @Singleton
 class YoutubeDataApiRequest @Inject constructor(
-    val retrofit:YoutubeDataService
+    val retrofit:YoutubeDataApiService
 )

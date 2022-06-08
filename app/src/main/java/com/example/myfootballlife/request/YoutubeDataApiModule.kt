@@ -16,11 +16,11 @@ class YoutubeDataApiModule {
     }
     @Singleton
     @Provides
-    fun provideYoutubeDataService(): YoutubeDataService {
+    fun provideYoutubeDataService(): YoutubeDataApiService {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(YoutubeDataService::class.java)
+            .create(YoutubeDataApiService::class.java)
     }
 }
