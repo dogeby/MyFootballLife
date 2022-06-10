@@ -1,4 +1,4 @@
-package com.example.myfootballlife.request
+package com.example.myfootballlife.api
 
 import dagger.Module
 import dagger.Provides
@@ -10,17 +10,17 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class YoutubeDataApiModule {
+class TwitterApiModule {
     companion object {
-        private const val baseUrl = "https://www.googleapis.com/youtube/v3/"
+        private const val baseUrl = "https://api.twitter.com/"
     }
     @Singleton
     @Provides
-    fun provideYoutubeDataService(): YoutubeDataApiService {
+    fun provideTwitterApiService(): TwitterApiService {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(YoutubeDataApiService::class.java)
+            .create(TwitterApiService::class.java)
     }
 }

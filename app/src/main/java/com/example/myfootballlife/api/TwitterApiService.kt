@@ -1,4 +1,4 @@
-package com.example.myfootballlife.request
+package com.example.myfootballlife.api
 
 import com.example.myfootballlife.BuildConfig
 import com.example.myfootballlife.data.twitterapi.timelines.TimelinesResponseBody
