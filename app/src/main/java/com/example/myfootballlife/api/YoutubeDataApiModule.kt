@@ -10,10 +10,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class YoutubeDataApiModule {
-    companion object {
-        private const val baseUrl = "https://www.googleapis.com/youtube/v3/"
-    }
+object YoutubeDataApiModule {
+    private const val baseUrl = "https://www.googleapis.com/youtube/v3/"
     @Singleton
     @Provides
     fun provideYoutubeDataService(): YoutubeDataApiService {

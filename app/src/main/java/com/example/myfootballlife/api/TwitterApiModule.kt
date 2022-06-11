@@ -10,10 +10,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class TwitterApiModule {
-    companion object {
-        private const val baseUrl = "https://api.twitter.com/"
-    }
+object TwitterApiModule {
+    private const val baseUrl = "https://api.twitter.com/"
     @Singleton
     @Provides
     fun provideTwitterApiService(): TwitterApiService {

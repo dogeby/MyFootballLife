@@ -10,7 +10,7 @@ class TwitterApiTest {
 
     @Test
     fun testTimeline() = runBlocking {
-        val retrofit = TwitterApiModule().provideTwitterApiService()
+        val retrofit = TwitterApiModule.provideTwitterApiService()
         val userResponseBody = retrofit.requestRetrieveUsersByUsernames("SpursOfficial")
         assertThat(userResponseBody.users[0].name, CoreMatchers.`is`("Tottenham Hotspur"))
         val timelineResponseBody = retrofit.requestUserTweetTimeline(userResponseBody.users[0].id)
