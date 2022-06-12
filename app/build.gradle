@@ -17,6 +17,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.myfootballlife.CustomTestRunner"
         buildConfigField "String", "YOUTUBE_DATA_API_KEY", properties['youtube_data_api_key']
         buildConfigField "String", "TWITTER_API_BEARER_TOKEN", properties['twitter_api_bearer_token']
     }
@@ -50,6 +51,8 @@ dependencies {
     def hilt_version = '2.40'
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptTest "com.google.dagger:hilt-android-compiler:$hilt_version"
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
@@ -60,4 +63,11 @@ dependencies {
 
     //coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+
+    //room
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
 }
