@@ -28,7 +28,7 @@ interface YoutubeDataApiService {
 
     /** https://developers.google.com/youtube/v3/docs/playlistItems/list?hl=ko */
     @GET("playlistItems")
-    suspend fun requestListPlaylistItems(@Query("part")part: String, @Query("id") id:String? = null, @Query("playlistId") playlistId:String? = null, @Query("key") key: String = YOUTUBE_DATA_API_KEY): PlaylistItemsResponseBody
+    suspend fun requestListPlaylistItems(@Query("part")part: String, @Query("id") id:String? = null, @Query("playlistId") playlistId:String? = null, @Query("pageToken") pageToken:String? = null, @Query("key") key: String = YOUTUBE_DATA_API_KEY): PlaylistItemsResponseBody
 
     /** https://developers.google.com/youtube/v3/docs/videos/list?hl=ko */
     @GET("videos")
