@@ -8,5 +8,5 @@ data class Meta(
     @SerializedName("newest_id") val newestId:String,
     @SerializedName("oldest_id") val oldestId:String,
     @SerializedName("next_token") val nextToken:String,
-    @SerializedName("previousToken") val previousToken:String
+    @SerializedName("previous_token") val previousToken:String
 )
