@@ -8,19 +8,19 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface YoutubeDbDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertChannel(channels: Channels)
+    suspend fun insertChannel(channel: Channels)
 
     @Delete
-    suspend fun deleteChannel(channels: Channels)
+    suspend fun deleteChannel(channel: Channels)
 
     @Query("SELECT * FROM Channels")
     fun getAllChannel(): Flow<List<Channels>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertVideo(videos: Videos)
+    suspend fun insertVideo(video: Videos)
 
     @Delete
-    suspend fun deleteVideo(videos: Videos)
+    suspend fun deleteVideo(video: Videos)
 
     @Query("SELECT * FROM Videos")
     fun getAllVideo(): Flow<List<Videos>>

@@ -8,19 +8,19 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TwitterDbDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTweet(tweets: Tweets)
+    suspend fun insertTweet(tweet: Tweets)
 
     @Delete
-    suspend fun deleteTweet(tweets: Tweets)
+    suspend fun deleteTweet(tweet: Tweets)
 
     @Query("SELECT * FROM Tweets")
     fun getAllTweet(): Flow<List<Tweets>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(users: Users)
+    suspend fun insertUser(user: Users)
 
     @Delete
-    suspend fun deleteUser(users: Users)
+    suspend fun deleteUser(user: Users)
 
     @Query("SELECT * FROM Users")
     fun getAllUser(): Flow<List<Users>>
