@@ -20,5 +20,13 @@ object AppDatabaseModule {
 
     @Singleton
     @Provides
-    fun provideFavoriteTeamDbDao(appDatabase: AppDatabase) = appDatabase.favoriteTeamDbDao()
+    fun provideTwitterDbDao(appDatabase: AppDatabase) = appDatabase.twitterDbDao()
+
+    @Singleton
+    @Provides
+    fun provideYoutubeDbDao(appDatabase: AppDatabase) = appDatabase.youtubeDbDao()
+
+    @Singleton
+    @Provides
+    fun provideSubscribeDbDao(appDatabase: AppDatabase) = appDatabase.subscribeDbDao()
 }

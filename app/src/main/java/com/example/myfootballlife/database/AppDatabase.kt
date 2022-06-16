@@ -2,9 +2,17 @@ package com.example.myfootballlife.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.myfootballlife.data.Team
+import androidx.room.TypeConverters
+import com.example.myfootballlife.data.Subscribe
+import com.example.myfootballlife.data.twitterapi.tweets.Tweets
+import com.example.myfootballlife.data.twitterapi.users.Users
+import com.example.myfootballlife.data.youtubeapi.channels.Channels
+import com.example.myfootballlife.data.youtubeapi.videos.Videos
 
-@Database(entities = [Team::class], version = 1, exportSchema = false)
+@Database(entities = [Tweets::class, Users::class, Channels::class, Videos::class, Subscribe::class], version = 1, exportSchema = false)
+@TypeConverters(StringMapConverter::class, ThumbnailsMapConverter::class, KindConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun favoriteTeamDbDao():FavoriteTeamDbDao
+    abstract fun twitterDbDao(): TwitterDbDao
+    abstract fun youtubeDbDao(): YoutubeDbDao
+    abstract fun subscribeDbDao(): SubscribeDbDao
 }
