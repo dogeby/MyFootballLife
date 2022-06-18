@@ -7,7 +7,9 @@ object Converter {
                 this.append(str)
                 this.append(',')
             }
-            this.deleteCharAt(this.length - 1)
+            if (this.isNotBlank()) {
+                this.deleteCharAt(this.length - 1)
+            }
         }.toString()
     }
 }
