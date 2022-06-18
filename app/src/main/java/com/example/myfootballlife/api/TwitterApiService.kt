@@ -20,7 +20,7 @@ interface TwitterApiService {
     /** https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets **/
     @GET("2/users/{id}/tweets")
     @Headers("Authorization: Bearer $TWITTER_API_BEARER_TOKEN")
-    suspend fun requestUserTweetTimeline(@Path("id") id:String, @Query("pagination_token") paginationToken:String? = null, @Query("since_id") sinceId:String? = null, @Query("end_time") endTime:String? = null, @Query("tweet.fields") tweetFields:String = "${TweetsFields.AUTHOR_ID},${TweetsFields.CREATED_AT},${TweetsFields.LANG}"): TimelinesResponseBody
+    suspend fun requestUserTweetTimeline(@Path("id") id:String, @Query("pagination_token") paginationToken:String? = null, @Query("since_id") sinceId:String? = null, @Query("until_id") untilId:String? = null, @Query("tweet.fields") tweetFields:String = "${TweetsFields.AUTHOR_ID},${TweetsFields.CREATED_AT},${TweetsFields.LANG}"): TimelinesResponseBody
 
     /** https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by-username-username */
     @GET("2/users/by")
