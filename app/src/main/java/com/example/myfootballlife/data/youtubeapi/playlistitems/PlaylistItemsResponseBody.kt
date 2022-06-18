@@ -10,5 +10,5 @@ data class PlaylistItemsResponseBody(
     @SerializedName("nextPageToken") val nextPageToken: String?,
     @SerializedName("prevPageToken") val prevPageToken: String?,
     @SerializedName("pageInfo") val pageInfo: PageInfo,
-    @SerializedName("items") val items: List<PlaylistItems>
+    @SerializedName("items") val items: List<PlaylistItems>?
 )

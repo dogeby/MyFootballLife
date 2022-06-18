@@ -10,5 +10,5 @@ data class ChannelsResponseBody(
     @SerializedName("nextPageToken") val nextPageToken: String,
     @SerializedName("prevPageToken") val prevPageToken: String,
     @SerializedName("pageInfo") val pageInfo: PageInfo,
-    @SerializedName("items") val items: List<Channels>
+    @SerializedName("items") val items: List<Channels>?
 )

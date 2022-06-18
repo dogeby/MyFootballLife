@@ -5,6 +5,6 @@ import com.google.gson.annotations.SerializedName
 
 /** https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets#tab0 */
 data class TimelinesResponseBody(
-    @SerializedName("data") val tweets: List<Tweets>,
+    @SerializedName("data") val tweets: List<Tweets>?,
     @SerializedName("meta") val meta:Meta
 )
