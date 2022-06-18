@@ -4,9 +4,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.myfootballlife.api.TwitterApiModule
 import com.example.myfootballlife.api.YoutubeDataApiModule
 import com.example.myfootballlife.data.Kind
-import com.example.myfootballlife.data.Subscribe
+import com.example.myfootballlife.data.Subscription
 import com.example.myfootballlife.database.AppDatabase
-import com.example.myfootballlife.database.SubscribeDbDao
+import com.example.myfootballlife.database.SubscriptionDbDao
 import com.example.myfootballlife.database.TwitterDbDao
 import com.example.myfootballlife.database.YoutubeDbDao
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -36,7 +36,7 @@ class RoomDatabaseTest {
     @Inject
     lateinit var youtubeDbDao: YoutubeDbDao
     @Inject
-    lateinit var subscribeDbDao: SubscribeDbDao
+    lateinit var subscriptionDbDao: SubscriptionDbDao
 
     @Before
     fun init() {
@@ -84,10 +84,10 @@ class RoomDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun writeSubscribeDb() = runBlocking {
-        val subscribe = Subscribe("1", Kind.TWITTER, "tot")
-        subscribeDbDao.insertSubscribe(subscribe)
-        val subscribes = subscribeDbDao.getAllSubscribe()
+    fun writeSubscriptionDb() = runBlocking {
+        val subscribe = Subscription("1", Kind.TWITTER, "tot")
+        subscriptionDbDao.insertSubscription(subscribe)
+        val subscribes = subscriptionDbDao.getAllSubscription()
         MatcherAssert.assertThat(subscribes.first()[0].kind, CoreMatchers.`is`(subscribe.kind))
     }
 }

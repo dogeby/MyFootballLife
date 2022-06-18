@@ -28,5 +28,5 @@ object AppDatabaseModule {
 
     @Singleton
     @Provides
-    fun provideSubscribeDbDao(appDatabase: AppDatabase) = appDatabase.subscribeDbDao()
+    fun provideSubscriptionDbDao(appDatabase: AppDatabase) = appDatabase.subscriptionDbDao()
 }
