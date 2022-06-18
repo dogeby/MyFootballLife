@@ -20,17 +20,17 @@ interface YoutubeDataApiService {
 
     /** https://developers.google.com/youtube/v3/docs/channels/list **/
     @GET("channels")
-    suspend fun requestListChannels(@Query("part")part: String, @Query("forUsername") forUsername:String? = null, @Query("id") id:String? = null, @Query("key") key: String = YOUTUBE_DATA_API_KEY): ChannelsResponseBody
+    suspend fun requestListChannels(@Query("forUsername") forUsername:String? = null, @Query("id") id:String? = null, @Query("pageToken") pageToken: String? = null, @Query("part")part: String = "snippet, contentDetails", @Query("key") key: String = YOUTUBE_DATA_API_KEY): ChannelsResponseBody
 
     /** https://developers.google.com/youtube/v3/docs/playlists/list */
     @GET("playlists")
-    suspend fun requestListPlaylists(@Query("part")part: String, @Query("id") id:String? = null, @Query("channelId") channelId:String? = null, @Query("key") key: String = YOUTUBE_DATA_API_KEY): PlaylistsResponseBody
+    suspend fun requestListPlaylists(@Query("id") id:String? = null, @Query("channelId") channelId:String? = null, @Query("part")part: String = "snippet", @Query("key") key: String = YOUTUBE_DATA_API_KEY): PlaylistsResponseBody
 
     /** https://developers.google.com/youtube/v3/docs/playlistItems/list?hl=ko */
     @GET("playlistItems")
-    suspend fun requestListPlaylistItems(@Query("part")part: String, @Query("id") id:String? = null, @Query("playlistId") playlistId:String? = null, @Query("pageToken") pageToken:String? = null, @Query("key") key: String = YOUTUBE_DATA_API_KEY): PlaylistItemsResponseBody
+    suspend fun requestListPlaylistItems(@Query("id") id:String? = null, @Query("playlistId") playlistId:String? = null, @Query("pageToken") pageToken:String? = null, @Query("part")part: String = "snippet, contentDetails", @Query("key") key: String = YOUTUBE_DATA_API_KEY): PlaylistItemsResponseBody
 
     /** https://developers.google.com/youtube/v3/docs/videos/list?hl=ko */
     @GET("videos")
-    suspend fun requestListVideos(@Query("part")part: String, @Query("id") id:String? = null, @Query("key") key: String = YOUTUBE_DATA_API_KEY): VideosResponseBody
+    suspend fun requestListVideos(@Query("id") id:String? = null, @Query("part")part: String = "snippet, contentDetails, statistics", @Query("key") key: String = YOUTUBE_DATA_API_KEY): VideosResponseBody
 }
