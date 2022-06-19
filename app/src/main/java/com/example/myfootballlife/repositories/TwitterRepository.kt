@@ -49,8 +49,8 @@ class TwitterRepository @Inject constructor(
 
         //최신 트윗 확인
         val tweets = mutableListOf<Tweets>()
+        var nextToken:String? = null
         do {
-            var nextToken:String? = null
             val timelinesResponseBody = twitterApiService.requestUserTweetTimeline(authorId, nextToken, tweetsInDb[0].id)
             timelinesResponseBody.tweets?.let {
                 insertTweets(it)

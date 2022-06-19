@@ -2,6 +2,7 @@ package com.example.myfootballlife
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.myfootballlife.database.AppDatabase
+import com.example.myfootballlife.database.TwitterDbDao
 import com.example.myfootballlife.repositories.TwitterRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -26,6 +27,8 @@ class TwitterRepositoryTest {
     lateinit var appDatabase: AppDatabase
     @Inject
     lateinit var twitterRepository: TwitterRepository
+    @Inject
+    lateinit var twitterDbDao: TwitterDbDao
 
     @Before
     fun init() {
@@ -57,11 +60,15 @@ class TwitterRepositoryTest {
         val uIdList = listOf("2244994945")
         val users = twitterRepository.getUsers(uIdList)
         val user = users[0]
-        val tweets = twitterRepository.getTweets(user.id)
+        var tweets = twitterRepository.getTweets(user.id)
         MatcherAssert.assertThat(tweets[0].authorId, CoreMatchers.`is`(user.id))
 
         val oldTweets = twitterRepository.getOldTweets(user.id, tweets.last().id)
         MatcherAssert.assertThat(oldTweets[0].authorId, CoreMatchers.`is`(user.id))
+
+        for(i in 0 until 6){
+            tweets = twitterRepository.getOldTweets(user.id, tweets.last().id)
+        }
 
         twitterRepository.deleteTweets(user.id, 50)
 
@@ -70,5 +77,28 @@ class TwitterRepositoryTest {
 
         val emptyTweets = twitterRepository.getTweets("1111")
         MatcherAssert.assertThat(emptyTweets.size, CoreMatchers.`is`(0))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun latestTweetsTest() = runBlocking {
+        val uIdList = listOf("1193109572015329280")
+        val users = twitterRepository.getUsers(uIdList)
+        val user = users[0]
+        var tweets = twitterRepository.getTweets(user.id)
+
+        for(i in 0 until 5){
+            tweets = twitterRepository.getOldTweets(user.id, tweets.last().id)
+        }
+
+
+        tweets = twitterRepository.getTweets(user.id)
+        for(i in 0 until 20) {
+            twitterDbDao.deleteTweet(tweets[i])
+        }
+
+        val afterDeleteTweets = twitterRepository.getTweets(user.id)
+        MatcherAssert.assertThat(afterDeleteTweets.size, CoreMatchers.`is`(tweets.size))
+
     }
 }
