@@ -75,4 +75,6 @@ class TwitterRepository @Inject constructor(
     }
     /** delete Tweet **/
     suspend fun deleteTweets(authorId: String, remainSize:Int) = twitterDbDao.deleteTweets(authorId, remainSize)
+
+    suspend fun deleteAllTweets(authorId: String) = twitterDbDao.deleteAllTweets(authorId)
 }

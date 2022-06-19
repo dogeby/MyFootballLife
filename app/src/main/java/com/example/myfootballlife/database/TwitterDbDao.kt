@@ -36,6 +36,9 @@ interface TwitterDbDao {
     @Query("DELETE FROM Tweets WHERE NOT id IN (SELECT id FROM Tweets WHERE author_id == :authorId ORDER BY created_at DESC LIMIT :remainSize)")
     suspend fun deleteTweets(authorId: String, remainSize:Int)
 
+    @Query("DELETE FROM Tweets WHERE author_id = :authorId")
+    suspend fun deleteAllTweets(authorId: String)
+
     @Query("SELECT * FROM Tweets")
     fun getAllTweet(): Flow<List<Tweets>>
 
