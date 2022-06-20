@@ -54,13 +54,13 @@ class RoomDatabaseTest {
     fun writeTwitterDb() = runBlocking {
         val retrofit = TwitterApiModule.provideTwitterApiService()
         val userResponseBody = retrofit.requestRetrieveUsersByUsernames("SpursOfficial")
-        twitterDbDao.insertUser(userResponseBody.users[0])
-        MatcherAssert.assertThat(twitterDbDao.getAllUser().first()[0].id, CoreMatchers.`is`(userResponseBody.users[0].id))
+        val user = userResponseBody.users!![0]
+        twitterDbDao.insertUser(user)
+        MatcherAssert.assertThat(twitterDbDao.getAllUser().first()[0].id, CoreMatchers.`is`(user.id))
 
-        val timelineResponseBody = retrofit.requestUserTweetTimeline(userResponseBody.users[0].id)
-
-        twitterDbDao.insertTweet(timelineResponseBody.tweets[0])
-        MatcherAssert.assertThat(twitterDbDao.getAllTweet().first()[0].authorId, CoreMatchers.`is`(timelineResponseBody.tweets[0].authorId))
+        val timelineResponseBody = retrofit.requestUserTweetTimeline(user.id)
+        twitterDbDao.insertTweet(timelineResponseBody.tweets!![0])
+        MatcherAssert.assertThat(twitterDbDao.getAllTweet().first()[0].authorId, CoreMatchers.`is`(timelineResponseBody.tweets!![0].authorId))
     }
 
     @Test
@@ -68,16 +68,16 @@ class RoomDatabaseTest {
     fun writeYoutubeDb() = runBlocking {
         // channel
         val channelResponseBody = YoutubeDataApiModule.provideYoutubeDataService().requestListChannels("snippet, contentDetails", "zilioner83")
-        youtubeDbDao.insertChannel(channelResponseBody.items[0])
+        youtubeDbDao.insertChannel(channelResponseBody.items!![0])
         val channelInDb = youtubeDbDao.getAllChannel().first()[0]
-        MatcherAssert.assertThat(channelInDb.id, CoreMatchers.`is`(channelResponseBody.items[0].id))
-        val uploadsPlaylistId = channelResponseBody.items[0].contentDetails.relatedPlaylists["uploads"]
+        MatcherAssert.assertThat(channelInDb.id, CoreMatchers.`is`(channelResponseBody.items!![0].id))
+        val uploadsPlaylistId = channelResponseBody.items!![0].contentDetails.relatedPlaylists["uploads"]
         //playlistItems
         val playlistItemResponseBody = YoutubeDataApiModule.provideYoutubeDataService().requestListPlaylistItems("snippet, contentDetails", null, uploadsPlaylistId)
         //video
-        val videoId = playlistItemResponseBody.items[0].contentDetails.videoId
+        val videoId = playlistItemResponseBody.items!![0].contentDetails.videoId
         val videoResponseBody = YoutubeDataApiModule.provideYoutubeDataService().requestListVideos("snippet, contentDetails, statistics", videoId)
-        youtubeDbDao.insertVideo(videoResponseBody.items[0])
+        youtubeDbDao.insertVideo(videoResponseBody.items!![0])
         val videoInDb = youtubeDbDao.getAllVideo().first()[0]
         MatcherAssert.assertThat(videoInDb.id, CoreMatchers.`is`(videoId))
     }
