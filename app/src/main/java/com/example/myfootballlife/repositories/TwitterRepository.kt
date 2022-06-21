@@ -1,9 +1,9 @@
 package com.example.myfootballlife.repositories
 
-import com.example.myfootballlife.api.TwitterApiService
-import com.example.myfootballlife.data.twitterapi.tweets.Tweets
-import com.example.myfootballlife.data.twitterapi.users.Users
-import com.example.myfootballlife.database.TwitterDbDao
+import com.example.myfootballlife.data.api.TwitterApiService
+import com.example.myfootballlife.data.models.twitterapi.tweets.Tweets
+import com.example.myfootballlife.data.models.twitterapi.users.Users
+import com.example.myfootballlife.data.local.TwitterDbDao
 import com.example.myfootballlife.utils.Converter
 import javax.inject.Inject
 

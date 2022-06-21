@@ -1,14 +1,14 @@
 package com.example.myfootballlife
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.myfootballlife.api.TwitterApiModule
-import com.example.myfootballlife.api.YoutubeDataApiModule
-import com.example.myfootballlife.data.Kind
-import com.example.myfootballlife.data.Subscription
-import com.example.myfootballlife.database.AppDatabase
-import com.example.myfootballlife.database.SubscriptionDbDao
-import com.example.myfootballlife.database.TwitterDbDao
-import com.example.myfootballlife.database.YoutubeDbDao
+import com.example.myfootballlife.data.api.TwitterApiModule
+import com.example.myfootballlife.data.api.YoutubeDataApiModule
+import com.example.myfootballlife.data.models.Kind
+import com.example.myfootballlife.data.models.Subscription
+import com.example.myfootballlife.data.local.AppDatabase
+import com.example.myfootballlife.data.local.SubscriptionDbDao
+import com.example.myfootballlife.data.local.TwitterDbDao
+import com.example.myfootballlife.data.local.YoutubeDbDao
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.flow.first

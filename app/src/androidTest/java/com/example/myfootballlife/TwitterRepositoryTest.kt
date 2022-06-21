@@ -1,8 +1,8 @@
 package com.example.myfootballlife
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.myfootballlife.database.AppDatabase
-import com.example.myfootballlife.database.TwitterDbDao
+import com.example.myfootballlife.data.local.AppDatabase
+import com.example.myfootballlife.data.local.TwitterDbDao
 import com.example.myfootballlife.repositories.TwitterRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

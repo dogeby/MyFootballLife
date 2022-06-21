@@ -1,6 +1,6 @@
 package com.example.myfootballlife
 
-import com.example.myfootballlife.api.YoutubeDataApiModule
+import com.example.myfootballlife.data.api.YoutubeDataApiModule
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert.assertThat
