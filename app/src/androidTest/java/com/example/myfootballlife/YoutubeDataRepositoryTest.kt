@@ -1,8 +1,8 @@
 package com.example.myfootballlife
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.myfootballlife.data.models.youtubeapi.channels.RelatedPlaylistsKey
 import com.example.myfootballlife.data.local.AppDatabase
+import com.example.myfootballlife.data.models.youtubeapi.channels.RelatedPlaylistsKey
 import com.example.myfootballlife.repositories.YoutubeDataRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

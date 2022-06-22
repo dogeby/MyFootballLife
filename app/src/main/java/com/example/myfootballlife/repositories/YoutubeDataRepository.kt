@@ -1,9 +1,9 @@
 package com.example.myfootballlife.repositories
 
 import com.example.myfootballlife.data.api.YoutubeDataApiService
+import com.example.myfootballlife.data.local.YoutubeDbDao
 import com.example.myfootballlife.data.models.youtubeapi.channels.Channels
 import com.example.myfootballlife.data.models.youtubeapi.videos.Videos
-import com.example.myfootballlife.data.local.YoutubeDbDao
 import com.example.myfootballlife.utils.Converter
 import javax.inject.Inject
 

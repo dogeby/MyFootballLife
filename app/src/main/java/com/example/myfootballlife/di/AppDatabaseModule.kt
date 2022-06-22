@@ -1,7 +1,8 @@
-package com.example.myfootballlife.data.local
+package com.example.myfootballlife.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.myfootballlife.data.local.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

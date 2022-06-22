@@ -1,5 +1,6 @@
-package com.example.myfootballlife.data.api
+package com.example.myfootballlife.di
 
+import com.example.myfootballlife.data.api.TwitterApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,15 +11,15 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object YoutubeDataApiModule {
-    private const val baseUrl = "https://www.googleapis.com/youtube/v3/"
+object TwitterApiModule {
+    private const val baseUrl = "https://api.twitter.com/"
     @Singleton
     @Provides
-    fun provideYoutubeDataService(): YoutubeDataApiService {
+    fun provideTwitterApiService(): TwitterApiService {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(YoutubeDataApiService::class.java)
+            .create(TwitterApiService::class.java)
     }
 }

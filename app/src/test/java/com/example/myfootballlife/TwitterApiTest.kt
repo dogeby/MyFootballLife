@@ -1,6 +1,6 @@
 package com.example.myfootballlife
 
-import com.example.myfootballlife.data.api.TwitterApiModule
+import com.example.myfootballlife.di.TwitterApiModule
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert.assertThat
