@@ -47,7 +47,7 @@ class TwitterTest {
     fun getUsers() = runBlocking{
         twitterRepository.setUsersEventListener {
             GlobalScope.launch {
-                twitterRepository.updateUsers(it.users)
+                twitterRepository.updateUsers(it.users!!)
                 MatcherAssert.assertThat(twitterRepository.getUsers().size, CoreMatchers.`is`(14))
             }
         }
@@ -56,11 +56,10 @@ class TwitterTest {
     @Test
     @Throws(Exception::class)
     fun getTweets() = runBlocking {
-        getUsers()
-        val userId = twitterRepository.getUsers().first().id
+        val userId = "34613288"
         twitterRepository.setTweetsEventListener(userId) {
             GlobalScope.launch(Dispatchers.IO) {
-                twitterRepository.insertTweets(it.tweets)
+                twitterRepository.insertTweets(it.tweets!!)
                 MatcherAssert.assertThat(twitterRepository.getTweets(userId).first()[0].authorId, CoreMatchers.`is`(userId))
             }
         }

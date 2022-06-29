@@ -17,6 +17,9 @@ interface TwitterDbDao {
     @Query("DELETE FROM Users WHERE id IN (:ids)")
     suspend fun deleteUsers(ids: List<String>)
 
+    @Query("DELETE FROM Users")
+    suspend fun deleteAllUsers()
+
     @Query("SELECT * FROM Users")
     fun getAllUser(): List<Users>
 

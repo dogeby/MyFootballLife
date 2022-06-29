@@ -8,8 +8,8 @@ import androidx.room.PrimaryKey
 @Entity
 data class Users(
     @PrimaryKey val id:String = "",
-    val name:String = "",
-    val username:String = "",
-    val description:String = "",
-    @ColumnInfo(name = "profile_image_url") val profileImageUrl:String = ""
+    val name:String? = null,
+    val username:String? = null,
+    val description:String? = null,
+    @ColumnInfo(name = "profile_image_url") val profileImageUrl:String? = null
 )

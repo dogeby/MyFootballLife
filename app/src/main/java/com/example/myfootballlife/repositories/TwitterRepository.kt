@@ -31,6 +31,8 @@ class TwitterRepository @Inject constructor(
 
     fun getUsers() = twitterDbDao.getAllUser()
 
+    suspend fun deleteAllUsers() = twitterDbDao.deleteAllUsers()
+
     /** Tweets **/
     suspend fun insertTweets(tweets: List<Tweets>) {
         tweets.forEach {

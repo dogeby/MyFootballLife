@@ -8,8 +8,8 @@ import androidx.room.PrimaryKey
 @Entity
 data class Tweets(
     @PrimaryKey val id:String = "",
-    val text:String = "",
-    @ColumnInfo(name = "author_id") val authorId:String = "",
-    @ColumnInfo(name = "created_at") val createdAt:String = "",
-    val lang:String = ""
+    val text:String? = null,
+    @ColumnInfo(name = "author_id") val authorId:String? = null,
+    @ColumnInfo(name = "created_at") val createdAt:String? = null,
+    val lang:String? = null
 )
