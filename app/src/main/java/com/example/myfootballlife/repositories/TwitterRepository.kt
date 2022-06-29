@@ -13,12 +13,17 @@ class TwitterRepository @Inject constructor(
     private val twitterDbDao: TwitterDbDao
 ){
     /** Users **/
-    suspend fun insertUsers(users: List<Users>) {
+    suspend fun updateUsers(users: List<Users>) {
+        insertUsers(users)
+        val excludeUserIds = users.map { user -> user.id }.let { userIds -> twitterDbDao.getExcludeUserIds(userIds) }
+        twitterDbDao.deleteUsers(excludeUserIds)
+    }
+
+    private suspend fun insertUsers(users: List<Users>) {
         users.forEach {
             twitterDbDao.insertUser(it)
         }
     }
-    // TODO: 삭제 한 유저 처리(유저, 관련 트윗) 구현
 
     fun setUsersEventListener(callback: (UsersBody) -> Unit) {
         firebaseRealtimeDbDao.setValueEventListener("twitterUsers", callback)
@@ -38,4 +43,12 @@ class TwitterRepository @Inject constructor(
     }
 
     fun getTweets() = twitterDbDao.getAllTweet()
+
+    suspend fun deleteTweet(tweet: Tweets) = twitterDbDao.deleteTweet(tweet)
+
+    suspend fun deleteAllTweets(authorId: String) = twitterDbDao.deleteAllTweets(authorId)
+
+    suspend fun deleteTweets(authorId: String, remainSize:Int) = twitterDbDao.deleteTweets(authorId, remainSize)
+
+    suspend fun deleteAllTweets() = twitterDbDao.deleteAllTweets()
 }

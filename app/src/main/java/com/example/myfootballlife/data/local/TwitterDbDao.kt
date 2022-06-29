@@ -22,6 +22,9 @@ interface TwitterDbDao {
     @Query("SELECT * FROM Users WHERE id IN (:ids)")
     fun getUsers(ids:List<String>): List<Users>
 
+    @Query("SELECT id FROM Users WHERE NOT id IN (:ids)")
+    fun getExcludeUserIds(ids: List<String>): List<String>
+
     /** Tweets **/
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTweet(tweet: Tweets)
@@ -37,6 +40,9 @@ interface TwitterDbDao {
 
     @Query("DELETE FROM Tweets WHERE author_id = :authorId")
     suspend fun deleteAllTweets(authorId: String)
+
+    @Query("DELETE FROM Tweets")
+    suspend fun deleteAllTweets()
 
     @Query("SELECT * FROM Tweets")
     fun getAllTweet(): List<Tweets>
