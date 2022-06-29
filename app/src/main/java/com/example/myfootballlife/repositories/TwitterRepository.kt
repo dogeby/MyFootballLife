@@ -44,6 +44,10 @@ class TwitterRepository @Inject constructor(
 
     fun getTweets() = twitterDbDao.getAllTweet()
 
+    fun getTweets(authorId: String) = twitterDbDao.getTweetsByAuthorId(authorId)
+
+    fun getTweets(authorIds: List<String>) = twitterDbDao.getTweetsByAuthorIds(authorIds)
+
     suspend fun deleteTweet(tweet: Tweets) = twitterDbDao.deleteTweet(tweet)
 
     suspend fun deleteAllTweets(authorId: String) = twitterDbDao.deleteAllTweets(authorId)

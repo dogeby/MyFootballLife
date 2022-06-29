@@ -3,6 +3,7 @@ package com.example.myfootballlife.data.local
 import androidx.room.*
 import com.example.myfootballlife.data.models.twitterapi.tweets.Tweets
 import com.example.myfootballlife.data.models.twitterapi.users.Users
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TwitterDbDao {
@@ -48,8 +49,8 @@ interface TwitterDbDao {
     fun getAllTweet(): List<Tweets>
 
     @Query("SELECT * FROM Tweets WHERE author_id IN (:authorIds) ORDER BY created_at DESC")
-    fun getTweetsByAuthorIds(authorIds: List<String>): List<Tweets>
+    fun getTweetsByAuthorIds(authorIds: List<String>): Flow<List<Tweets>>
 
     @Query("SELECT * FROM Tweets WHERE author_id = :authorId ORDER BY created_at DESC")
-    fun getTweetsByAuthorId(authorId: String): List<Tweets>
+    fun getTweetsByAuthorId(authorId: String): Flow<List<Tweets>>
 }
