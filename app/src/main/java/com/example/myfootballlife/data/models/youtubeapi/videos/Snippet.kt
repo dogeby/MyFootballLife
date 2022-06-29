@@ -2,14 +2,13 @@ package com.example.myfootballlife.data.models.youtubeapi.videos
 
 import androidx.room.ColumnInfo
 import com.example.myfootballlife.data.models.youtubeapi.thumbnails.Thumbnails
-import com.google.gson.annotations.SerializedName
 
 /** https://developers.google.com/youtube/v3/docs/videos?hl=ko */
 data class Snippet(
-    @ColumnInfo(name = "published_at") @SerializedName("publishedAt") val publishedAt:String,
-    @ColumnInfo(name = "channel_id") @SerializedName("channelId") val channelId:String,
-    @SerializedName("title") val title:String,
-    @SerializedName("description") val description:String,
-    @SerializedName("thumbnails") val thumbnails:Map<String, Thumbnails>,
-    @ColumnInfo(name = "channel_title") @SerializedName("channelTitle") val channelTitle:String
+    @ColumnInfo(name = "published_at") val publishedAt:String? = null,
+    @ColumnInfo(name = "channel_id") val channelId:String? = null,
+    val title:String? = null,
+    val description:String? = null,
+    val thumbnails:Map<String, Thumbnails>? = null,
+    @ColumnInfo(name = "channel_title") val channelTitle:String? = null
 )
