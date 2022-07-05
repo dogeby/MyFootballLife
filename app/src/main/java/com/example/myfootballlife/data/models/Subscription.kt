@@ -1,10 +1,11 @@
 package com.example.myfootballlife.data.models
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity(primaryKeys = ["id", "kind"])
+@Entity
 data class Subscription(
-    val id: String,
+    @PrimaryKey val id: String,
     val kind: Kind,
     val team: String?
 )
