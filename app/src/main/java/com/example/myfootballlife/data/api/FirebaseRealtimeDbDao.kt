@@ -20,7 +20,21 @@ class FirebaseRealtimeDbDao @Inject constructor(
         addValueEventListener(listener)
     }
 
+    inline fun <reified T> setListenerForSingleValueEvent (path: String, crossinline callback: (T) -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.child(path).getValue(T::class.java)?.let { callback(it) }
+            }
+            override fun onCancelled(error: DatabaseError) { }
+        }
+        addListenerSingleValueEvent(listener)
+    }
+
     fun addValueEventListener(listener: ValueEventListener) {
         databaseReference.addValueEventListener(listener)
+    }
+
+    fun addListenerSingleValueEvent(listener: ValueEventListener) {
+        databaseReference.addListenerForSingleValueEvent(listener)
     }
 }

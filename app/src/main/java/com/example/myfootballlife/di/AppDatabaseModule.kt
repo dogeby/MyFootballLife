@@ -30,4 +30,8 @@ object AppDatabaseModule {
     @Singleton
     @Provides
     fun provideSubscriptionDbDao(appDatabase: AppDatabase) = appDatabase.subscriptionDbDao()
+
+    @Singleton
+    @Provides
+    fun provideTeamDbDao(appDatabase: AppDatabase) = appDatabase.teamDbDao()
 }
