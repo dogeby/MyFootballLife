@@ -15,8 +15,8 @@ interface TeamDbDao {
     suspend fun delete(names: List<String>)
 
     @Query("SELECT * FROM Team")
-    suspend fun getAll():List<Team>
+    fun getAll():List<Team>
 
     @Query("SELECT name FROM Team WHERE NOT name IN (:names)")
-    suspend fun getExcludeTeamNames(names: List<String>): List<String>
+    fun getExcludeTeamNames(names: List<String>): List<String>
 }

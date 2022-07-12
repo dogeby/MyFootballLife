@@ -15,7 +15,7 @@ class SubscriptionRepository @Inject constructor(
         subscriptionDbDao.deleteSubscription(id)
     }
 
-    suspend fun getAllSubscription() = subscriptionDbDao.getAllSubscription()
+    fun getAllSubscription() = subscriptionDbDao.getAllSubscription()
 
-    suspend fun getSubscription(teamName: String) = subscriptionDbDao.getSubscription(teamName)
+    fun getSubscription(teamName: String) = subscriptionDbDao.getSubscription(teamName)
 }

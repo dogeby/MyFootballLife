@@ -16,8 +16,8 @@ interface SubscriptionDbDao {
     suspend fun deleteSubscription(id:String)
 
     @Query("SELECT * FROM Subscription")
-    suspend fun getAllSubscription(): Flow<List<Subscription>>
+    fun getAllSubscription(): Flow<List<Subscription>>
 
     @Query("SELECT * FROM Subscription WHERE team = :teamName")
-    suspend fun getSubscription(teamName: String): Flow<List<Subscription>>
+    fun getSubscription(teamName: String): Flow<List<Subscription>>
 }
