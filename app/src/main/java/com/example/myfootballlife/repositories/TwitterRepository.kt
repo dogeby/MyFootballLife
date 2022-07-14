@@ -29,7 +29,7 @@ class TwitterRepository @Inject constructor(
         firebaseRealtimeDbDao.setValueEventListener("twitterUsers", callback)
     }
 
-    fun getUsers() = twitterDbDao.getAllUser()
+    suspend fun getUsers() = twitterDbDao.getAllUser()
 
     suspend fun deleteAllUsers() = twitterDbDao.deleteAllUsers()
 
@@ -44,7 +44,7 @@ class TwitterRepository @Inject constructor(
         firebaseRealtimeDbDao.setValueEventListener("latestTweets/$authorId", callback)
     }
 
-    fun getTweets() = twitterDbDao.getAllTweet()
+    suspend fun getTweets() = twitterDbDao.getAllTweet()
 
     fun getTweets(authorId: String) = twitterDbDao.getTweetsByAuthorId(authorId)
 

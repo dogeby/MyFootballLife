@@ -29,7 +29,7 @@ class YoutubeRepository @Inject constructor(
         firebaseRealtimeDbDao.setValueEventListener("youtubeChannels", callback)
     }
 
-    fun getChannels() = youtubeDbDao.getAllChannel()
+    suspend fun getChannels() = youtubeDbDao.getAllChannel()
 
     /** Videos **/
     suspend fun insertVideos(videos: List<Videos>) {
@@ -42,7 +42,7 @@ class YoutubeRepository @Inject constructor(
         firebaseRealtimeDbDao.setValueEventListener("latestVideos/$channelId", callback)
     }
 
-    fun getVideos() = youtubeDbDao.getAllVideo()
+    suspend fun getVideos() = youtubeDbDao.getAllVideo()
 
     fun getVideos(channelId: String) = youtubeDbDao.getVideosByChannelId(channelId)
 

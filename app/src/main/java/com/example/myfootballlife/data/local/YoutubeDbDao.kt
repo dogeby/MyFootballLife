@@ -18,13 +18,13 @@ interface YoutubeDbDao {
     suspend fun deleteChannels(ids: List<String>)
 
     @Query("SELECT * FROM Channels")
-    fun getAllChannel(): List<Channels>
+    suspend fun getAllChannel(): List<Channels>
 
     @Query("SELECT * FROM Channels WHERE id IN (:ids)")
-    fun getChannels(ids: List<String>): List<Channels>
+    suspend fun getChannels(ids: List<String>): List<Channels>
 
     @Query("SELECT id FROM Channels WHERE NOT id IN (:ids)")
-    fun getExcludeChannelIds(ids: List<String>): List<String>
+    suspend fun getExcludeChannelIds(ids: List<String>): List<String>
 
     /** Videos **/
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -46,13 +46,13 @@ interface YoutubeDbDao {
     suspend fun deleteAllVideos()
 
     @Query("SELECT * FROM Videos")
-    fun getAllVideo(): List<Videos>
+    suspend fun getAllVideo(): List<Videos>
 
     @Query("SELECT * FROM Videos WHERE id IN (:ids)")
-    fun getVideosByIds(ids: List<String>): List<Videos>
+    suspend fun getVideosByIds(ids: List<String>): List<Videos>
 
     @Query("SELECT * FROM Videos WHERE id = :id")
-    fun getVideoById(id: String): Videos
+    suspend fun getVideoById(id: String): Videos
 
     @Query("SELECT * FROM Videos WHERE channel_id IN (:channelIds)")
     fun getVideosByChannelIds(channelIds: List<String>): Flow<List<Videos>>

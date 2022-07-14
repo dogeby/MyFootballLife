@@ -25,5 +25,5 @@ class TeamRepository @Inject constructor(
         firebaseRealtimeDbDao.setListenerForSingleValueEvent("teamInfo", callback)
     }
 
-    fun getTeams() = teamDbDao.getAll()
+    suspend fun getTeams() = teamDbDao.getAll()
 }
