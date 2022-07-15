@@ -44,6 +44,12 @@ class TwitterRepository @Inject constructor(
         firebaseRealtimeDbDao.setValueEventListener("latestTweets/$authorId", callback)
     }
 
+    suspend fun setAllLatestTweetsSingleEventListener(callback: (TweetsBody) -> Unit) {
+        getUsers().forEach {
+            firebaseRealtimeDbDao.setListenerForSingleValueEvent("latestTweets/${it.id}", callback)
+        }
+    }
+
     suspend fun getTweets() = twitterDbDao.getAllTweet()
 
     fun getTweets(authorId: String) = twitterDbDao.getTweetsByAuthorId(authorId)
